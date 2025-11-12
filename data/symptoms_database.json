@@ -1,0 +1,91 @@
+{
+  "conditions": {
+    "Digestive Upset": {
+      "keywords": ["vomit", "vomiting", "throw up", "nausea", "sick", "stomach", "diarrhea"],
+      "description": "Gastrointestinal distress possibly due to dietary issues, infection, or poisoning",
+      "severity": "moderate",
+      "pet_types": ["dog", "cat", "rabbit"],
+      "recommended_action": "Monitor closely for 24 hours. Withhold food for 12 hours but provide water. Contact vet if symptoms persist or worsen.",
+      "urgent_keywords": ["blood", "severe", "constant", "lethargy"]
+    },
+    "Leg Injury": {
+      "keywords": ["limp", "limping", "leg pain", "can't walk", "not walking", "swollen leg", "hurt leg"],
+      "description": "Injury to leg, possibly sprain, strain, fracture, or joint issue",
+      "severity": "moderate",
+      "pet_types": ["dog", "cat"],
+      "recommended_action": "Rest the pet and limit activity. Apply cold compress if swelling present. Visit vet within 24-48 hours for examination.",
+      "urgent_keywords": ["can't stand", "dragging", "bone visible", "severe swelling"]
+    },
+    "Respiratory Issue": {
+      "keywords": ["cough", "coughing", "sneeze", "sneezing", "breathing problem", "wheezing", "shortness of breath"],
+      "description": "Upper respiratory infection, allergies, or breathing difficulty",
+      "severity": "mild",
+      "pet_types": ["dog", "cat", "bird"],
+      "recommended_action": "Monitor breathing pattern. Ensure good air circulation. Schedule vet visit if symptoms persist more than 2-3 days.",
+      "urgent_keywords": ["blue gums", "gasping", "collapse", "can't breathe"]
+    },
+    "Skin Irritation": {
+      "keywords": ["scratch", "scratching", "itch", "itchy", "skin problem", "rash", "red skin", "hair loss"],
+      "description": "Skin irritation due to allergies, parasites, or infection",
+      "severity": "mild",
+      "pet_types": ["dog", "cat", "rabbit"],
+      "recommended_action": "Check for fleas or ticks. Avoid bathing with harsh products. Schedule vet visit if severe or not improving.",
+      "urgent_keywords": ["bleeding", "oozing", "large bald patches", "severe swelling"]
+    },
+    "Eye Problem": {
+      "keywords": ["eye discharge", "red eye", "squinting", "eye swollen", "cloudy eye", "eye closed"],
+      "description": "Eye infection, injury, or irritation",
+      "severity": "moderate",
+      "pet_types": ["dog", "cat", "bird", "rabbit"],
+      "recommended_action": "Keep area clean. Avoid touching or rubbing. Visit vet within 24 hours as eye problems can worsen quickly.",
+      "urgent_keywords": ["vision loss", "bulging eye", "severe pain", "both eyes affected"]
+    },
+    "Ear Problem": {
+      "keywords": ["ear discharge", "ear smell", "head shaking", "ear scratching", "tilting head"],
+      "description": "Ear infection or mite infestation",
+      "severity": "mild",
+      "pet_types": ["dog", "cat", "rabbit"],
+      "recommended_action": "Keep ears dry. Do not insert anything into ear canal. Schedule vet visit for examination and proper treatment.",
+      "urgent_keywords": ["severe swelling", "bleeding", "loss of balance", "extreme pain"]
+    },
+    "Lethargy": {
+      "keywords": ["tired", "sleepy", "no energy", "weak", "not active", "depressed", "not playing"],
+      "description": "Unusual tiredness or lack of energy, may indicate underlying illness",
+      "severity": "moderate",
+      "pet_types": ["dog", "cat", "bird", "rabbit"],
+      "recommended_action": "Monitor for other symptoms. Ensure adequate water intake. Contact vet if lasts more than 24 hours or accompanied by other symptoms.",
+      "urgent_keywords": ["won't wake", "collapse", "unconscious", "cold to touch"]
+    },
+    "Loss of Appetite": {
+      "keywords": ["not eating", "won't eat", "refusing food", "no appetite", "skipping meals"],
+      "description": "Decreased or absent appetite, may indicate illness or stress",
+      "severity": "moderate",
+      "pet_types": ["dog", "cat", "bird", "rabbit"],
+      "recommended_action": "Try offering favorite foods. Ensure fresh water available. Contact vet if continues more than 24-48 hours.",
+      "urgent_keywords": ["weight loss", "dehydration", "vomiting", "also lethargic"]
+    },
+    "Excessive Drinking": {
+      "keywords": ["drinking a lot", "very thirsty", "excessive water", "always drinking"],
+      "description": "Increased water consumption, may indicate diabetes, kidney issues, or other conditions",
+      "severity": "moderate",
+      "pet_types": ["dog", "cat"],
+      "recommended_action": "Monitor water intake. Note frequency of urination. Schedule vet visit for blood work and urinalysis.",
+      "urgent_keywords": ["combined with vomiting", "weight loss", "lethargy", "frequent urination"]
+    },
+    "Seizure": {
+      "keywords": ["seizure", "convulsion", "shaking", "tremor", "fit", "spasm"],
+      "description": "Abnormal electrical activity in brain causing involuntary movements",
+      "severity": "severe",
+      "pet_types": ["dog", "cat"],
+      "recommended_action": "DO NOT restrain. Move away dangerous objects. Time the seizure. Contact vet immediately, especially if first seizure or lasts over 5 minutes.",
+      "urgent_keywords": ["multiple seizures", "not recovering", "lasting over 5 minutes", "unconscious"]
+    }
+  },
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "2025-11-12",
+    "total_conditions": 10,
+    "supported_pet_types": ["dog", "cat", "bird", "rabbit"],
+    "notes": "This is a basic database for fallback when AI is unavailable. Not a substitute for professional veterinary care."
+  }
+}

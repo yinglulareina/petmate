@@ -4,6 +4,8 @@
 
 PetMate is an AI-powered web application that interprets natural-language descriptions of pet symptoms, provides potential health insights, and recommends nearby veterinary hospitals based on the user's location.
 
+**Supported Pets:** Dogs 🐕 and Cats 🐈
+
 ## Motivation
 
 As a pet owner, I know how stressful it feels when pets act sick and you don't know what's wrong. Many people search online but get unreliable results and waste a lot of time trying to find trustworthy answers. This tool helps pet owners get useful information faster and find real help nearby.
@@ -198,12 +200,6 @@ python -c "from openai import OpenAI; import os; from dotenv import load_dotenv;
 
 - Developer 1: Yongxuan Li
 - Developer 2: Ying Lu
-
-## Team Collaboration
-
-- **Coding Standards & Terminology Guide**: Shared via Google Docs for real-time collaboration
-- **Version Control**: GitHub for code management
-- **Communication**: [Your preferred platform]
 
 ## License
 
