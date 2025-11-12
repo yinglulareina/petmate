@@ -1,0 +1,143 @@
+{
+  "hospitals": [
+    {
+      "hospital_id": "VET001",
+      "name": "Boston Veterinary Emergency & Specialty",
+      "address": "180 Bear Hill Rd, Waltham, MA 02451",
+      "latitude": 42.3912,
+      "longitude": -71.2356,
+      "phone": "(781) 684-8387",
+      "rating": 4.7,
+      "is_emergency": true,
+      "specialties": ["general", "canine", "feline", "emergency", "surgery", "orthopedics"],
+      "hours": "24/7",
+      "website": "https://example.com/boston-vet-emergency"
+    },
+    {
+      "hospital_id": "VET002",
+      "name": "Angell Animal Medical Center",
+      "address": "350 South Huntington Ave, Boston, MA 02130",
+      "latitude": 42.3318,
+      "longitude": -71.1051,
+      "phone": "(617) 522-7282",
+      "rating": 4.8,
+      "is_emergency": true,
+      "specialties": ["general", "canine", "feline", "emergency", "cardiology", "oncology"],
+      "hours": "24/7",
+      "website": "https://example.com/angell-animal"
+    },
+    {
+      "hospital_id": "VET003",
+      "name": "VCA South Shore Animal Hospital",
+      "address": "595 Columbian St, South Weymouth, MA 02190",
+      "latitude": 42.1813,
+      "longitude": -70.9583,
+      "phone": "(781) 337-6622",
+      "rating": 4.5,
+      "is_emergency": false,
+      "specialties": ["general", "canine", "feline", "dental", "wellness"],
+      "hours": "Mon-Fri 8am-7pm, Sat 8am-5pm",
+      "website": "https://example.com/vca-south-shore"
+    },
+    {
+      "hospital_id": "VET004",
+      "name": "Cambridge Cat Clinic",
+      "address": "1280 Massachusetts Ave, Cambridge, MA 02138",
+      "latitude": 42.3850,
+      "longitude": -71.1190,
+      "phone": "(617) 354-3606",
+      "rating": 4.9,
+      "is_emergency": false,
+      "specialties": ["feline", "wellness", "dental", "geriatric"],
+      "hours": "Mon-Fri 8am-6pm, Sat 9am-3pm",
+      "website": "https://example.com/cambridge-cat-clinic",
+      "notes": "Cats only, Fear-Free certified"
+    },
+    {
+      "hospital_id": "VET005",
+      "name": "Metropolitan Veterinary Associates",
+      "address": "1301 Soldiers Field Rd, Brighton, MA 02135",
+      "latitude": 42.3547,
+      "longitude": -71.1520,
+      "phone": "(617) 254-7621",
+      "rating": 4.6,
+      "is_emergency": true,
+      "specialties": ["general", "canine", "feline", "emergency", "internal-medicine"],
+      "hours": "24/7",
+      "website": "https://example.com/metro-vet"
+    },
+    {
+      "hospital_id": "VET006",
+      "name": "Beacon Hill Veterinary Associates",
+      "address": "35 Bowdoin St, Boston, MA 02114",
+      "latitude": 42.3617,
+      "longitude": -71.0625,
+      "phone": "(617) 523-7677",
+      "rating": 4.4,
+      "is_emergency": false,
+      "specialties": ["general", "canine", "feline", "wellness", "preventive-care"],
+      "hours": "Mon-Fri 7:30am-7pm, Sat 8am-4pm",
+      "website": "https://example.com/beacon-hill-vet"
+    },
+    {
+      "hospital_id": "VET007",
+      "name": "BluePearl Pet Hospital - Charlestown",
+      "address": "180 2nd Ave, Charlestown, MA 02129",
+      "latitude": 42.3782,
+      "longitude": -71.0602,
+      "phone": "(617) 886-1088",
+      "rating": 4.3,
+      "is_emergency": true,
+      "specialties": ["general", "canine", "feline", "emergency", "critical-care", "neurology"],
+      "hours": "24/7",
+      "website": "https://example.com/bluepearl-charlestown"
+    },
+    {
+      "hospital_id": "VET008",
+      "name": "Back Bay Veterinary Clinic",
+      "address": "535 Commonwealth Ave, Boston, MA 02215",
+      "latitude": 42.3505,
+      "longitude": -71.0859,
+      "phone": "(617) 247-2273",
+      "rating": 4.6,
+      "is_emergency": false,
+      "specialties": ["general", "canine", "feline", "dermatology", "behavior"],
+      "hours": "Mon-Fri 8am-7pm, Sat 9am-5pm",
+      "website": "https://example.com/back-bay-vet"
+    },
+    {
+      "hospital_id": "VET009",
+      "name": "South Boston Animal Hospital",
+      "address": "326 W Broadway, South Boston, MA 02127",
+      "latitude": 42.3351,
+      "longitude": -71.0469,
+      "phone": "(617) 268-0800",
+      "rating": 4.2,
+      "is_emergency": false,
+      "specialties": ["general", "canine", "feline", "vaccinations", "microchipping"],
+      "hours": "Mon-Fri 8am-6pm, Sat 9am-2pm",
+      "website": "https://example.com/southie-animal"
+    },
+    {
+      "hospital_id": "VET010",
+      "name": "Tufts Veterinary Emergency Treatment & Specialties",
+      "address": "525 South St, Walpole, MA 02081",
+      "latitude": 42.1417,
+      "longitude": -71.2495,
+      "phone": "(508) 668-5454",
+      "rating": 4.8,
+      "is_emergency": true,
+      "specialties": ["general", "canine", "feline", "emergency", "surgery", "radiology", "ophthalmology"],
+      "hours": "24/7",
+      "website": "https://example.com/tufts-vets"
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "2025-11-12",
+    "total_hospitals": 10,
+    "coverage_area": "Greater Boston, MA",
+    "supported_pet_types": ["dog", "cat"],
+    "notes": "This is sample data for the Boston area. Team members can expand this database by adding more hospitals in different locations."
+  }
+}
