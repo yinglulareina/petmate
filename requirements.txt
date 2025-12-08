@@ -2,7 +2,7 @@
 # Python 3.9+ required
 
 # Web Framework
-streamlit==1.28.0
+streamlit~=1.28.0
 
 # AI/NLP
 openai==2.7.2
@@ -14,9 +14,6 @@ python-dotenv==1.0.0
 pandas==2.1.1
 numpy==1.24.3
 
-# JSON handling (built-in, but listed for reference)
-# json - standard library
-
 # Testing
 pytest==7.4.2
 pytest-cov==4.1.0
@@ -24,7 +21,3 @@ pytest-cov==4.1.0
 # Code Quality
 flake8==6.1.0
 black==23.9.1
-
-# Future additions (comment out until needed):
-# requests==2.31.0              # For external APIs
-# geopy==2.4.0                  # For geolocation services

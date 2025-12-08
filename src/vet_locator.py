@@ -10,6 +10,8 @@ Date: November 2025
 
 import json
 import math
+import requests
+import re
 from typing import List, Dict, Tuple, Optional
 from pathlib import Path
 
@@ -22,9 +24,10 @@ except ModuleNotFoundError:
 
 class VetLocator:
     """
-    Veterinary hospital locator with filtering and sorting capabilities.
+    Veterinary hospital locator with intelligent geocoding and filtering.
 
     Features:
+    - Intelligent geocoding with 3-tier fallback strategy
     - Distance calculation using Haversine formula
     - Filter by distance, rating, and emergency services
     - Sort by distance or rating
@@ -64,10 +67,284 @@ class VetLocator:
                 f"Hospital database not found at {self.hospital_db_path}"
             )
 
-        with open(db_path, 'r') as f:
+        with open(db_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
 
         return data.get("hospitals", [])
+
+    # ========== NEW: Geocoding Methods ==========
+
+    def geocode(
+        self,
+        location_name: str,
+        timeout: int = 10
+    ) -> Tuple[float, float]:
+        """
+        Convert location name to coordinates with intelligent fallback.
+
+        Strategy:
+        1. Try OpenStreetMap API (external geocoding)
+        2. Try local hospital database city matching
+        3. Use first available city as fallback
+
+        Args:
+            location_name: City name or address
+            timeout: API request timeout in seconds
+
+        Returns:
+            (latitude, longitude) tuple
+
+        Raises:
+            ValueError: If no valid location can be determined
+        """
+        # Strategy 1: External API
+        coords = self._geocode_via_api(location_name, timeout)
+        if coords:
+            return coords
+
+        # Strategy 2: Local database
+        coords = self._geocode_via_database(location_name)
+        if coords:
+            return coords
+
+        # Strategy 3: Fallback to first available city
+        available_cities = self.get_available_cities()
+        if available_cities:
+            coords = self.get_city_center(available_cities[0])
+            if coords:
+                return coords
+
+        # Last resort: raise error
+        raise ValueError(
+            f"Could not determine coordinates for '{location_name}'. "
+            f"Available cities: {', '.join(available_cities)}"
+        )
+
+    def _geocode_via_api(
+        self,
+        location_name: str,
+        timeout: int
+    ) -> Optional[Tuple[float, float]]:
+        """
+        Geocode using OpenStreetMap Nominatim API.
+
+        Args:
+            location_name: Location to geocode
+            timeout: Request timeout
+
+        Returns:
+            (lat, lon) tuple or None if failed
+        """
+        try:
+            # Preprocess location name
+            clean_name = self._preprocess_location(location_name)
+
+            url = "https://nominatim.openstreetmap.org/search"
+            params = {"q": clean_name, "format": "json", "limit": 1}
+            headers = {"User-Agent": "PetMate-CS5001-Project"}
+
+            response = requests.get(
+                url,
+                params=params,
+                headers=headers,
+                timeout=timeout
+            )
+            data = response.json()
+
+            if data:
+                return (float(data[0]["lat"]), float(data[0]["lon"]))
+
+            # Try original input if preprocessing failed
+            params["q"] = location_name
+            response = requests.get(
+                url,
+                params=params,
+                headers=headers,
+                timeout=timeout
+            )
+            data = response.json()
+
+            if data:
+                return (float(data[0]["lat"]), float(data[0]["lon"]))
+
+            return None
+
+        except Exception:
+            # Log error but don't raise - we have fallback strategies
+            return None
+
+    def _geocode_via_database(
+        self,
+        location_name: str
+    ) -> Optional[Tuple[float, float]]:
+        """
+        Geocode using local hospital database.
+
+        Args:
+            location_name: Location to find
+
+        Returns:
+            (lat, lon) tuple or None if not found
+        """
+        return self.get_city_center(location_name)
+
+    def _preprocess_location(self, text: str) -> str:
+        """
+        Normalize location input for better API matching.
+
+        Handles:
+        - camelCase: "sanJose" -> "San Jose"
+        - No spaces: "BostonMA" -> "Boston MA"
+        - Multiple spaces: "San   Jose" -> "San Jose"
+
+        Args:
+            text: Raw location input
+
+        Returns:
+            Cleaned location string
+        """
+        # Insert space before capital letters (camelCase)
+        text = re.sub(r'([a-z])([A-Z])', r'\1 \2', text)
+
+        # Insert space before state codes (e.g., "BostonMA" -> "Boston MA")
+        text = re.sub(r'([a-z])([A-Z]{2})', r'\1 \2', text)
+
+        # Title case for consistency
+        text = text.title()
+
+        # Clean multiple spaces
+        text = ' '.join(text.split())
+
+        return text
+
+    def get_city_coverage(self) -> Dict[str, List[Dict]]:
+        """
+        Group hospitals by city/region.
+
+        Returns:
+            Dictionary mapping city names to hospital lists
+        """
+        city_map = {}
+
+        for hospital in self.hospitals:
+            address = hospital.get("address", "")
+
+            # Extract city from address (format: "..., City, State ...")
+            parts = address.split(",")
+            if len(parts) >= 2:
+                city = parts[-2].strip()
+
+                if city not in city_map:
+                    city_map[city] = []
+                city_map[city].append(hospital)
+
+        return city_map
+
+    def get_city_center(self, city_name: str) -> Optional[Tuple[float, float]]:
+        """
+        Get approximate center coordinates for a city.
+
+        Calculates centroid of all hospitals in the city.
+
+        Args:
+            city_name: Name of city
+
+        Returns:
+            (latitude, longitude) tuple or None if city not found
+        """
+        city_coverage = self.get_city_coverage()
+
+        # Fuzzy match: case-insensitive, partial match
+        city_name_lower = city_name.lower()
+
+        for city, hospitals in city_coverage.items():
+            if city_name_lower in city.lower() or city.lower() in city_name_lower:
+                if hospitals:
+                    avg_lat = sum(h["latitude"] for h in hospitals) / len(hospitals)
+                    avg_lon = sum(h["longitude"] for h in hospitals) / len(hospitals)
+                    return (round(avg_lat, 4), round(avg_lon, 4))
+
+        return None
+
+    def get_available_cities(self) -> List[str]:
+        """
+        Get list of cities with hospital coverage.
+
+        Returns:
+            Sorted list of city names
+        """
+        city_coverage = self.get_city_coverage()
+        return sorted(city_coverage.keys())
+
+    def get_geocode_info(self, location_name: str) -> Dict:
+        """
+        Get detailed geocoding information (useful for UI feedback).
+
+        Args:
+            location_name: Location to geocode
+
+        Returns:
+            Dictionary with coordinates, source, and metadata
+        """
+        result = {
+            "success": False,
+            "coordinates": None,
+            "source": None,
+            "message": "",
+            "available_cities": self.get_available_cities()
+        }
+
+        try:
+            # Try API
+            coords = self._geocode_via_api(location_name, timeout=10)
+            if coords:
+                result["success"] = True
+                result["coordinates"] = coords
+                result["source"] = "api"
+                result["message"] = f"Found location via geocoding service"
+                return result
+
+            # Try database
+            coords = self._geocode_via_database(location_name)
+            if coords:
+                city_coverage = self.get_city_coverage()
+                matched_city = None
+                for city in city_coverage.keys():
+                    if location_name.lower() in city.lower():
+                        matched_city = city
+                        break
+
+                result["success"] = True
+                result["coordinates"] = coords
+                result["source"] = "database"
+                result["message"] = (
+                    f"Matched to '{matched_city}' from hospital database "
+                    f"({len(city_coverage.get(matched_city, []))} hospitals)"
+                )
+                return result
+
+            # Fallback
+            available_cities = self.get_available_cities()
+            if available_cities:
+                coords = self.get_city_center(available_cities[0])
+                if coords:
+                    result["success"] = True
+                    result["coordinates"] = coords
+                    result["source"] = "fallback"
+                    result["message"] = (
+                        f"'{location_name}' not found. "
+                        f"Showing results for {available_cities[0]} instead."
+                    )
+                    return result
+
+            result["message"] = f"Location not found"
+            return result
+
+        except Exception as e:
+            result["message"] = f"Error: {str(e)}"
+            return result
+
+    # ========== Existing Methods (Keep unchanged) ==========
 
     def calculate_distance(
             self,
@@ -283,14 +560,14 @@ class VetLocator:
         Returns:
             Formatted string with hospital details
         """
-        emergency_badge = "🚨 24/7 Emergency" if hospital.get("is_emergency") else ""
+        emergency_badge = "[24/7 Emergency]" if hospital.get("is_emergency") else ""
 
         output = f"""
-🏥 {hospital['name']}
-   📍 Address: {hospital['address']}
-   ⭐ Rating: {hospital['rating']}/5.0
-   📞 Phone: {hospital['phone']}
-   📏 Distance: {hospital.get('distance', 'N/A')} km
+{hospital['name']}
+   Address: {hospital['address']}
+   Rating: {hospital['rating']}/5.0
+   Phone: {hospital['phone']}
+   Distance: {hospital.get('distance', 'N/A')} km
    {emergency_badge}
    Specialties: {', '.join(hospital.get('specialties', []))}
         """.strip()
@@ -321,56 +598,21 @@ def find_nearby_vets(
 
 # Testing
 if __name__ == "__main__":
-    print("🧪 Testing VetLocator...\n")
+    print("Testing VetLocator...\n")
 
-    # Test location: Boston, MA
-    boston_location = (42.3601, -71.0589)
-
-    # Initialize locator
+    # Test geocoding
     locator = VetLocator()
 
-    print(f"Total hospitals in database: {len(locator.hospitals)}")
-    print(f"Search location: Boston, MA {boston_location}")
-    print()
-
-    # Test 1: Find nearby hospitals
+    print("Test 1: Geocoding")
     print("=" * 60)
-    print("Test 1: Find hospitals within 50km, rating >= 4.0")
+    test_cities = ["Boston", "San Jose", "Oakland", "InvalidCity"]
+
+    for city in test_cities:
+        info = locator.get_geocode_info(city)
+        print(f"{city}: {info['source']} - {info['message']}")
+
+    print("\nTest 2: Available cities")
     print("=" * 60)
+    print(f"Cities: {', '.join(locator.get_available_cities())}")
 
-    recommendations = locator.get_recommendations(
-        boston_location,
-        search_radius=50,
-        min_rating=4.0,
-        max_results=5
-    )
-
-    print(f"\nFound {len(recommendations)} hospitals:\n")
-
-    for i, hospital in enumerate(recommendations, 1):
-        print(f"{i}. {locator.format_hospital_info(hospital)}")
-        print()
-
-    # Test 2: Emergency hospitals only
-    print("=" * 60)
-    print("Test 2: Emergency hospitals only")
-    print("=" * 60)
-
-    emergency_hospitals = locator.get_nearby_hospitals(
-        boston_location,
-        search_radius=50,
-        is_emergency=True
-    )
-
-    print(f"\nFound {len(emergency_hospitals)} emergency hospitals\n")
-
-    # Test 3: Distance calculation
-    print("=" * 60)
-    print("Test 3: Distance calculation")
-    print("=" * 60)
-
-    cambridge_location = (42.3736, -71.1097)
-    distance = locator.calculate_distance(boston_location, cambridge_location)
-    print(f"\nBoston to Cambridge: {distance} km")
-
-    print("\n✅ All tests complete!")
+    print("\nAll tests complete!")

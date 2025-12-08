@@ -68,7 +68,3 @@ cache/
 Thumbs.db
 ehthumbs.db
 Desktop.ini
-
-# Team documentation (local reference only, not shared on GitHub)
-CODING_STANDARDS.md
-TERMINOLOGY_GUIDE.md

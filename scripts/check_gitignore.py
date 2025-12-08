@@ -2,7 +2,7 @@
 """
 Pre-Commit GitIgnore Safety Check for PetMate Project
 
-This script validates .gitignore BEFORE you commit, preventing sensitive
+This script validates .gitignore BEFORE commit, preventing sensitive
 files from being accidentally tracked. Run this after 'git add' but
 BEFORE 'git commit'.
 

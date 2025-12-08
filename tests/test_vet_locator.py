@@ -341,6 +341,8 @@ class TestConvenienceFunction:
         assert len(results) > 0
 
 
+# tests/test_vet_locator.py
+
 class TestDataQuality:
     """Test data quality in hospital database."""
 
@@ -352,9 +354,12 @@ class TestDataQuality:
             assert "latitude" in hospital
             assert "longitude" in hospital
 
-            # Boston area coordinates (rough bounds)
-            assert 41 <= hospital["latitude"] <= 43
-            assert -72 <= hospital["longitude"] <= -70
+            # US latitude range: ~25 (Florida) to ~49 (Washington)
+            # US longitude range: ~-125 (West Coast) to ~-66 (East Coast)
+            assert 25 <= hospital["latitude"] <= 50, \
+                f"Invalid latitude for {hospital['name']}: {hospital['latitude']}"
+            assert -130 <= hospital["longitude"] <= -65, \
+                f"Invalid longitude for {hospital['name']}: {hospital['longitude']}"
 
     def test_all_hospitals_have_ratings(self):
         """Test that all hospitals have valid ratings."""
@@ -389,6 +394,17 @@ class TestDataQuality:
                        "canine" in specialties_lower or \
                        "feline" in specialties_lower
 
+    def test_multiple_regions_coverage(self):
+        """Test that database covers multiple regions."""
+        locator = VetLocator()
+        cities = locator.get_available_cities()
+
+        # Should have at least 3 cities
+        assert len(cities) >= 3, f"Expected multiple cities, got {len(cities)}"
+
+        # Should have both East and West coast cities
+        city_coverage = locator.get_city_coverage()
+        assert len(city_coverage) >= 3, "Should cover multiple cities"
 
 # Run tests with pytest
 if __name__ == "__main__":

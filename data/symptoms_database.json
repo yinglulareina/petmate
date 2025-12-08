@@ -2,90 +2,186 @@
   "conditions": {
     "Digestive Upset": {
       "keywords": ["vomit", "vomiting", "throw up", "nausea", "sick", "stomach", "diarrhea"],
-      "description": "Gastrointestinal distress possibly due to dietary issues, infection, or poisoning",
+      "description": "Gastrointestinal upset such as vomiting and/or diarrhea, commonly due to dietary indiscretion, infection, parasites, or systemic disease.",
       "severity": "moderate",
-      "pet_types": ["dog", "cat", "rabbit"],
-      "recommended_action": "Monitor closely for 24 hours. Withhold food for 12 hours but provide water. Contact vet if symptoms persist or worsen.",
-      "urgent_keywords": ["blood", "severe", "constant", "lethargy"]
+      "pet_types": ["dog", "cat"],
+      "recommended_action": "Offer small amounts of fresh water frequently. For healthy adult pets, withhold food for 8-12 hours, then reintroduce a bland diet in small portions. Do NOT fast young, very small, or chronically ill pets. Contact a veterinarian the same day if there are more than 2-3 episodes of vomiting or diarrhea, or if any blood, pain, or lethargy is noted.",
+      "urgent_keywords": ["blood", "bloody", "black stool", "severe", "constant", "repeated", "projectile", "lethargy", "very painful", "pale gums"]
     },
     "Leg Injury": {
       "keywords": ["limp", "limping", "leg pain", "can't walk", "not walking", "swollen leg", "hurt leg"],
-      "description": "Injury to leg, possibly sprain, strain, fracture, or joint issue",
+      "description": "Lameness or leg pain that may be caused by soft tissue injury (sprain/strain), joint disease, or fracture.",
       "severity": "moderate",
       "pet_types": ["dog", "cat"],
-      "recommended_action": "Rest the pet and limit activity. Apply cold compress if swelling present. Visit vet within 24-48 hours for examination.",
-      "urgent_keywords": ["can't stand", "dragging", "bone visible", "severe swelling"]
+      "recommended_action": "Restrict activity and prevent jumping or running. Confine to a small area if needed. You may apply a cold compress wrapped in a cloth for 5-10 minutes at a time if swelling is present. Do NOT give human pain medications. Arrange a veterinary examination within 24-48 hours, or sooner if pain is significant.",
+      "urgent_keywords": ["can't stand", "dragging", "bone visible", "severe swelling", "severe pain", "crying continuously"]
     },
     "Respiratory Issue": {
       "keywords": ["cough", "coughing", "sneeze", "sneezing", "breathing problem", "wheezing", "shortness of breath"],
-      "description": "Upper respiratory infection, allergies, or breathing difficulty",
-      "severity": "mild",
-      "pet_types": ["dog", "cat", "bird"],
-      "recommended_action": "Monitor breathing pattern. Ensure good air circulation. Schedule vet visit if symptoms persist more than 2-3 days.",
-      "urgent_keywords": ["blue gums", "gasping", "collapse", "can't breathe"]
+      "description": "Coughing, sneezing, or mild breathing changes that may be due to upper respiratory infection, allergies, or early respiratory disease.",
+      "severity": "moderate",
+      "pet_types": ["dog", "cat"],
+      "recommended_action": "Monitor breathing rate and effort in a calm environment. Avoid stress, heat, and heavy exercise. If cough, sneezing, or nasal discharge persists longer than 2-3 days, or if appetite decreases, schedule a veterinary visit. Any sign of increased effort to breathe should be treated as urgent.",
+      "urgent_keywords": ["blue gums", "gasping", "collapse", "can't breathe", "open mouth breathing", "rapid breathing", "breathing very hard"]
     },
     "Skin Irritation": {
       "keywords": ["scratch", "scratching", "itch", "itchy", "skin problem", "rash", "red skin", "hair loss"],
-      "description": "Skin irritation due to allergies, parasites, or infection",
+      "description": "Itching, redness, or hair loss that may be related to allergies, parasites, skin infection, or contact irritation.",
       "severity": "mild",
-      "pet_types": ["dog", "cat", "rabbit"],
-      "recommended_action": "Check for fleas or ticks. Avoid bathing with harsh products. Schedule vet visit if severe or not improving.",
-      "urgent_keywords": ["bleeding", "oozing", "large bald patches", "severe swelling"]
+      "pet_types": ["dog", "cat"],
+      "recommended_action": "Check for fleas, ticks, or obvious skin lesions. Use an appropriate parasite control recommended for the species. Avoid bathing with harsh shampoos or applying human creams. If itching is persistent, the skin is worsening, or the pet is uncomfortable, schedule a veterinary visit for diagnosis and treatment.",
+      "urgent_keywords": ["bleeding", "oozing", "large bald patches", "severe swelling", "spreading rapidly", "intense nonstop scratching"]
     },
     "Eye Problem": {
       "keywords": ["eye discharge", "red eye", "squinting", "eye swollen", "cloudy eye", "eye closed"],
-      "description": "Eye infection, injury, or irritation",
+      "description": "Eye discomfort or visible change that may be due to conjunctivitis, corneal ulcer, injury, or other ocular disease.",
       "severity": "moderate",
-      "pet_types": ["dog", "cat", "bird", "rabbit"],
-      "recommended_action": "Keep area clean. Avoid touching or rubbing. Visit vet within 24 hours as eye problems can worsen quickly.",
-      "urgent_keywords": ["vision loss", "bulging eye", "severe pain", "both eyes affected"]
+      "pet_types": ["dog", "cat"],
+      "recommended_action": "Prevent the pet from rubbing or scratching the eye, and do not apply over-the-counter human eye drops. Keep the area around the eye gently clean with saline if needed. Because eye conditions can worsen quickly, a veterinary examination within 24 hours is recommended, sooner if pain appears significant.",
+      "urgent_keywords": ["vision loss", "bulging eye", "severe pain", "both eyes affected", "eye looks blue or white", "sudden blindness", "chemical exposure"]
     },
     "Ear Problem": {
       "keywords": ["ear discharge", "ear smell", "head shaking", "ear scratching", "tilting head"],
-      "description": "Ear infection or mite infestation",
+      "description": "Ear discomfort that may be caused by infection, ear mites, foreign material, or allergic disease.",
       "severity": "mild",
-      "pet_types": ["dog", "cat", "rabbit"],
-      "recommended_action": "Keep ears dry. Do not insert anything into ear canal. Schedule vet visit for examination and proper treatment.",
-      "urgent_keywords": ["severe swelling", "bleeding", "loss of balance", "extreme pain"]
+      "pet_types": ["dog", "cat"],
+      "recommended_action": "Keep ears dry and avoid inserting cotton swabs or objects into the ear canal. Do not use home remedies or leftover medications without veterinary guidance. Schedule a veterinary visit for ear examination and appropriate cleaning and treatment, especially if symptoms last more than a few days.",
+      "urgent_keywords": ["severe swelling", "bleeding", "loss of balance", "extreme pain", "circling", "nystagmus"]
     },
     "Lethargy": {
       "keywords": ["tired", "sleepy", "no energy", "weak", "not active", "depressed", "not playing"],
-      "description": "Unusual tiredness or lack of energy, may indicate underlying illness",
+      "description": "Noticeable decrease in activity or responsiveness, which can be an early sign of many illnesses or pain.",
       "severity": "moderate",
-      "pet_types": ["dog", "cat", "bird", "rabbit"],
-      "recommended_action": "Monitor for other symptoms. Ensure adequate water intake. Contact vet if lasts more than 24 hours or accompanied by other symptoms.",
-      "urgent_keywords": ["won't wake", "collapse", "unconscious", "cold to touch"]
+      "pet_types": ["dog", "cat"],
+      "recommended_action": "Monitor closely for changes in appetite, drinking, urination, breathing, vomiting, or diarrhea. Ensure easy access to water and a quiet resting place. If lethargy lasts more than 24 hours, worsens, or occurs with other symptoms, contact a veterinarian the same day.",
+      "urgent_keywords": ["won't wake", "collapse", "unconscious", "cold to touch", "pale gums", "trouble breathing", "bloody vomiting", "bloody diarrhea"]
     },
     "Loss of Appetite": {
       "keywords": ["not eating", "won't eat", "refusing food", "no appetite", "skipping meals"],
-      "description": "Decreased or absent appetite, may indicate illness or stress",
+      "description": "Reduced or absent appetite, which may be associated with pain, fever, nausea, stress, or systemic disease.",
       "severity": "moderate",
-      "pet_types": ["dog", "cat", "bird", "rabbit"],
-      "recommended_action": "Try offering favorite foods. Ensure fresh water available. Contact vet if continues more than 24-48 hours.",
-      "urgent_keywords": ["weight loss", "dehydration", "vomiting", "also lethargic"]
+      "pet_types": ["dog", "cat"],
+      "recommended_action": "Offer a small amount of a familiar, palatable food and ensure fresh water is available. Do not force-feed or give human medications. If a normally healthy adult pet refuses all food for more than 24-48 hours, or sooner in young or chronically ill animals, contact a veterinarian for evaluation.",
+      "urgent_keywords": ["weight loss", "dehydration", "vomiting", "also lethargic", "very weak", "not drinking"]
     },
     "Excessive Drinking": {
       "keywords": ["drinking a lot", "very thirsty", "excessive water", "always drinking"],
-      "description": "Increased water consumption, may indicate diabetes, kidney issues, or other conditions",
+      "description": "Noticeable increase in drinking that can indicate hormonal disease, kidney problems, urinary tract disease, or other systemic issues.",
       "severity": "moderate",
       "pet_types": ["dog", "cat"],
-      "recommended_action": "Monitor water intake. Note frequency of urination. Schedule vet visit for blood work and urinalysis.",
-      "urgent_keywords": ["combined with vomiting", "weight loss", "lethargy", "frequent urination"]
+      "recommended_action": "Measure or estimate daily water intake if possible and note urination frequency and volume. Do not restrict water. Schedule a veterinary visit for examination, blood tests, and urinalysis to identify underlying causes, especially if changes persist more than a few days.",
+      "urgent_keywords": ["combined with vomiting", "weight loss", "lethargy", "frequent urination", "accidents in house", "not eating"]
     },
     "Seizure": {
       "keywords": ["seizure", "convulsion", "shaking", "tremor", "fit", "spasm"],
-      "description": "Abnormal electrical activity in brain causing involuntary movements",
+      "description": "Sudden episode of abnormal brain activity causing involuntary movements, loss of awareness, or behavior changes.",
       "severity": "severe",
       "pet_types": ["dog", "cat"],
-      "recommended_action": "DO NOT restrain. Move away dangerous objects. Time the seizure. Contact vet immediately, especially if first seizure or lasts over 5 minutes.",
-      "urgent_keywords": ["multiple seizures", "not recovering", "lasting over 5 minutes", "unconscious"]
+      "recommended_action": "Do NOT restrain the pet. Move furniture and objects away to prevent injury and keep the area quiet and dark. Time the seizure if possible. Once the pet is safe and starting to recover, contact a veterinarian immediately, especially for first-time seizures, seizures lasting longer than 3-5 minutes, or more than one seizure in 24 hours.",
+      "urgent_keywords": ["multiple seizures", "cluster seizures", "not recovering", "lasting over 5 minutes", "unconscious", "continuous seizure"]
+    },
+    "Heatstroke / Heat Stress": {
+      "keywords": ["overheated", "heatstroke", "panting heavily", "hot weather", "left in car", "collapsed in heat", "excessive panting", "heat stress"],
+      "description": "Potential heat stress or heatstroke from high environmental temperatures or overexertion.",
+      "severity": "severe",
+      "pet_types": ["dog", "cat"],
+      "recommended_action": "Move the pet to a cool shaded area immediately. Offer small amounts of cool (not ice-cold) water. Wet paws and belly with cool water and use a fan if available. Seek emergency veterinary care at once, especially if the pet is weak, collapsing, vomiting, or has bright red or pale gums.",
+      "urgent_keywords": ["collapse", "unconscious", "seizure", "very high temperature", "not responding", "gums very red", "gums very pale"]
+    },
+    "Toxin Exposure / Possible Poisoning": {
+      "keywords": ["ate chocolate", "ate xylitol", "ate grapes", "ate raisin", "ate medicine", "poison", "toxin", "rat bait", "slug bait", "antifreeze", "household cleaner", "plant", "lily", "pesticide"],
+      "description": "Possible ingestion of a toxic substance such as food, plant, chemical, or human medication.",
+      "severity": "severe",
+      "pet_types": ["dog", "cat"],
+      "recommended_action": "Contact a veterinarian or pet poison hotline immediately with the exact product name and amount eaten if known. Do not induce vomiting or give home remedies unless specifically instructed by a veterinarian. Bring the product packaging to the clinic if you go in.",
+      "urgent_keywords": ["chocolate", "xylitol", "grape", "raisin", "lily", "antifreeze", "rat poison", "tremor", "seizure", "collapse", "bloody vomiting", "bloody diarrhea"]
+    },
+    "Urinary Obstruction (Male Cat Emergency)": {
+      "keywords": ["male cat can't pee", "straining to pee", "in litter box a lot", "crying in litter box", "only drips of urine", "no urine", "peeing outside box and crying"],
+      "description": "Possible urethral blockage in a male cat. This is a true emergency and can be rapidly fatal without treatment.",
+      "severity": "severe",
+      "pet_types": ["cat"],
+      "recommended_action": "This can be life-threatening. Seek emergency veterinary care immediately. Do not wait to see if it improves on its own. Do not give pain medications at home unless prescribed by a vet.",
+      "urgent_keywords": ["male", "can't pee", "no urine", "crying", "vomiting", "very tired", "bloated belly"]
+    },
+    "Urinary Issue": {
+      "keywords": ["peeing blood", "blood in urine", "peeing a lot", "frequent urination", "straining to urinate", "urinating in house", "urinating outside box"],
+      "description": "Possible urinary tract infection, bladder irritation, or other urinary tract issue.",
+      "severity": "moderate",
+      "pet_types": ["dog", "cat"],
+      "recommended_action": "Schedule a veterinary visit within 24 hours for examination and urine testing. Encourage water intake. Do not give over-the-counter human medications.",
+      "urgent_keywords": ["can't pee", "no urine all day", "very painful", "vomiting", "collapsed", "very lethargic"]
+    },
+    "Bloat / Swollen Abdomen (Dog Emergency)": {
+      "keywords": ["swollen belly", "bloated stomach", "hard abdomen", "trying to vomit but nothing comes up", "retching", "very restless", "pacing and panting", "large deep chested dog"],
+      "description": "Possible gastric dilatation-volvulus (GDV) or other serious abdominal emergency, especially in large deep-chested dogs.",
+      "severity": "severe",
+      "pet_types": ["dog"],
+      "recommended_action": "This may be life-threatening. Go to an emergency veterinary hospital immediately. Do not wait at home or give food, water, or medications on your own.",
+      "urgent_keywords": ["trying to vomit", "nothing coming up", "very painful", "collapse", "pale gums", "rapid breathing"]
+    },
+    "Open Wound / Bleeding": {
+      "keywords": ["cut", "wound", "bleeding", "bitten", "bite wound", "laceration", "torn skin"],
+      "description": "Open wound, cut, or bite that may need cleaning, suturing, or antibiotics.",
+      "severity": "moderate",
+      "pet_types": ["dog", "cat"],
+      "recommended_action": "Apply gentle pressure with a clean cloth or bandage to control bleeding. Do not use hydrogen peroxide in deep wounds. See a veterinarian as soon as possible, especially for bite wounds or if bleeding does not stop within 5-10 minutes.",
+      "urgent_keywords": ["spurting blood", "won't stop bleeding", "very large wound", "exposed bone", "shock", "very pale gums"]
+    },
+    "Allergic Reaction / Swelling": {
+      "keywords": ["facial swelling", "swollen face", "hives", "bumps on skin", "allergic reaction", "bee sting", "insect sting", "vaccine reaction", "swollen muzzle"],
+      "description": "Possible allergic reaction, often after a sting, bite, new food, or medication.",
+      "severity": "moderate",
+      "pet_types": ["dog", "cat"],
+      "recommended_action": "If breathing is normal and the pet is comfortable, contact a veterinarian promptly for advice. If there is any trouble breathing, collapse, or vomiting, go to an emergency clinic immediately.",
+      "urgent_keywords": ["trouble breathing", "gasping", "collapse", "vomiting", "diarrhea", "weak", "pale gums"]
+    },
+    "Pain / Vocalizing": {
+      "keywords": ["crying", "whimpering", "yelping", "screaming", "seems painful", "sudden pain", "very painful", "guarding area", "doesn't want to be touched"],
+      "description": "General significant pain from injury, abdomen, back, or other causes.",
+      "severity": "moderate",
+      "pet_types": ["dog", "cat"],
+      "recommended_action": "Minimize movement and keep the pet as calm and comfortable as possible. Do not give human pain medications as many are toxic to pets. Arrange a veterinary exam as soon as possible, same day if pain is significant.",
+      "urgent_keywords": ["screaming", "sudden collapse", "can't move", "paralyzed", "difficulty breathing"]
+    },
+    "Neurologic Issue / Hind Limb Weakness": {
+      "keywords": ["back leg weakness", "dragging back legs", "hind limb paralysis", "ataxia", "wobbly", "stumbling", "neck pain", "back pain"],
+      "description": "Possible spinal, neurologic, or muscular problem affecting movement or coordination.",
+      "severity": "severe",
+      "pet_types": ["dog", "cat"],
+      "recommended_action": "Restrict movement immediately and keep the pet confined to prevent further injury. Seek urgent veterinary evaluation the same day, especially if the pet cannot walk or control urination.",
+      "urgent_keywords": ["cannot walk", "sudden paralysis", "loss of bladder control", "extreme neck pain", "extreme back pain"]
+    },
+    "Acute Collapse / Not Responding": {
+      "keywords": ["collapsed", "sudden collapse", "passed out", "not responding", "unconscious", "fainted", "very weak", "can't stand up"],
+      "description": "Sudden collapse or extreme weakness from many possible serious causes.",
+      "severity": "severe",
+      "pet_types": ["dog", "cat"],
+      "recommended_action": "This is an emergency. Transport the pet to the nearest veterinary clinic or emergency hospital immediately. Keep the pet warm and quiet during transport. Call the clinic to let them know you are coming.",
+      "urgent_keywords": ["unconscious", "not breathing", "blue gums", "seizure", "very slow breathing", "very fast breathing"]
+    },
+    "Dental / Mouth Problem": {
+      "keywords": ["bad breath", "drooling", "won't eat hard food", "pawing at mouth", "broken tooth", "swollen gums", "mouth pain"],
+      "description": "Dental disease or other oral pain that may affect eating and quality of life.",
+      "severity": "mild",
+      "pet_types": ["dog", "cat"],
+      "recommended_action": "Schedule a veterinary dental check within the next 1-2 weeks. Offer softer food if chewing is difficult. Seek earlier care if the pet stops eating altogether or has facial swelling.",
+      "urgent_keywords": ["not eating at all", "facial swelling", "blood from mouth", "sudden severe pain"]
+    },
+    "Gastrointestinal Foreign Body Suspected": {
+      "keywords": ["ate toy", "ate sock", "ate string", "ate ribbon", "swallowed bone", "chewed up toy and swallowed", "foreign object", "foreign body"],
+      "description": "Possible gastrointestinal foreign body that may cause obstruction.",
+      "severity": "severe",
+      "pet_types": ["dog", "cat"],
+      "recommended_action": "Contact a veterinarian promptly. Do not induce vomiting unless specifically instructed by a vet, especially if string, sharp objects, or unknown items are involved. Seek same-day examination if vomiting, lethargy, or loss of appetite develops.",
+      "urgent_keywords": ["repeated vomiting", "very painful belly", "bloated belly", "lethargic", "not eating"]
     }
   },
   "metadata": {
     "version": "1.0",
-    "last_updated": "2025-11-12",
-    "total_conditions": 10,
-    "supported_pet_types": ["dog", "cat", "bird", "rabbit"],
+    "last_updated": "2025-12-05",
+    "total_conditions": 22,
+    "supported_pet_types": ["dog", "cat"],
     "notes": "This is a basic database for fallback when AI is unavailable. Not a substitute for professional veterinary care."
   }
 }

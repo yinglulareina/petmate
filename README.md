@@ -32,11 +32,10 @@ As a pet owner, I know how stressful it feels when pets act sick and you don't k
 ```
 petmate/
 ├── src/
-│   ├── ai_symptom_analyzer.py    # AI-powered symptom analysis (OpenAI)
-│   ├── symptom_analyzer.py       # Rule-based fallback analysis
+│   ├── ai_symptom_analyzer.py     # AI-powered symptom analysis (OpenAI)
 │   ├── vet_locator.py             # Hospital location and recommendation
-│   ├── data_manager.py            # Data handling utilities
-│   └── utils.py                   # Helper functions
+│   └── config.py                  # Environment variables and configuration
+
 ├── data/
 │   ├── symptoms_database.json     # Symptom-to-condition mappings (fallback)
 │   └── vet_hospitals.json         # Hospital database
@@ -44,7 +43,6 @@ petmate/
 │   └── main.py                    # Main Streamlit application
 ├── tests/
 │   ├── test_ai_symptom_analyzer.py
-│   ├── test_symptom_analyzer.py
 │   └── test_vet_locator.py
 ├── scripts/
 │   └── check_gitignore.py         # GitIgnore validation tool
@@ -166,7 +164,7 @@ python -c "from openai import OpenAI; import os; from dotenv import load_dotenv;
 - [x] **Phase 0**: Project setup and configuration
 - [ ] **Phase 1**: Rule-based symptom analysis (fallback system)
 - [ ] **Phase 2**: OpenAI API integration for AI-powered analysis
-- [ ] **Phase 3**: Vet hospital data management
+- [ ] **Phase 3**: Symptoms and Vet hospital data management
 - [ ] **Phase 4**: Location-based recommendations
 - [ ] **Phase 5**: Streamlit user interface
 - [ ] **Phase 6**: Integration, testing, and optimization
